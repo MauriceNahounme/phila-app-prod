@@ -1,0 +1,23 @@
+{
+  "short_name": "PhilApp",
+  "name": "Phila - Cité des adorateurs",
+  "icons": [
+    {
+      "src": "img/LOGO-PHILA192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/LOGO-PHILA512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": true
+}
