@@ -19,10 +19,7 @@ const Login = () => {
     axios
       .post(
         `${BASE_URL}/members/login`,
-        JSON.stringify({
-          email,
-          password,
-        }),
+        { email, password },
         { "Access-Control-Allow-Credentials": true }
       )
       .then((res) => {
