@@ -22,10 +22,7 @@ const Login = () => {
         JSON.stringify({
           email,
           password,
-        }),
-        {
-          withCredentials: true,
-        }
+        })
       )
       .then((res) => {
         localStorage.setItem("tokenMember", res.data.tokenMember);
