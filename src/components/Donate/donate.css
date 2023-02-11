@@ -1,0 +1,26 @@
+.donate {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.donate-img {
+  width: 100%;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.donate-container {
+  margin: 10px;
+  /* padding: 5px; */
+  width: 400px;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: rgba(242, 242, 242, 0.738);
+}
