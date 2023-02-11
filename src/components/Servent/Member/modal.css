@@ -1,9 +1,0 @@
-.modal {
-  /* z-index: 1 */
-}
-
-@media all and (max-width: 1200px){
-  .modal {
-    /* z-index: 1; */
-  }
-}
