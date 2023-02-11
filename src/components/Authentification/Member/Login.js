@@ -17,13 +17,10 @@ const Login = () => {
     e.preventDefault();
 
     axios
-      .post(
-        `${BASE_URL}/members/login`,
-        JSON.stringify({
-          email,
-          password,
-        })
-      )
+      .post(`${BASE_URL}/members/login`, {
+        email,
+        password,
+      })
       .then((res) => {
         localStorage.setItem("tokenMember", res.data.tokenMember);
         authHeader(res.data.tokenMember);
