@@ -5,7 +5,24 @@ import { Avatar, Badge } from "antd";
 import FormModal from "../../Servent/Member/FormModal";
 
 const Topbar = () => {
-  const member = useSelector((state) => state.memberReducer);
+  const member = {
+    _id: "63ca88061d9d3df771775229",
+    email: "maurice@gmail.com",
+    password: "$2b$10$lkh1CvlIeamkXW29H60CVeXGs.MxnuJeZYE4Cbbljm.hnfh3SZH/O",
+    first_name: "Maurice",
+    last_name: "NAHOUNME",
+    civility: "M",
+    tel: "0753482251",
+    nationality: "Bénin",
+    num_street: "47 Avenue Paul Valéry",
+    address: "",
+    additional_address: "",
+    postal_code: "95200",
+    city: "Sarcelles",
+    createdAt: "1674217478518",
+    updatedAt: "1674874342642",
+    picture: "./uploads/profil/Maurice.jpg",
+  };
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -78,12 +95,12 @@ const Topbar = () => {
                       }}
                       size={50}
                     >
-                      {member?.member?.first_name.slice(0, 1) +
-                        member?.member?.last_name.slice(0, 1)}
+                      {member?.first_name.slice(0, 1) +
+                        member?.last_name.slice(0, 1)}
                     </Avatar>
                   </Badge>
                 </span>
-                {member?.member?.first_name + " " + member?.member?.last_name}
+                {member?.first_name + " " + member?.last_name}
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

@@ -15,7 +15,24 @@ import axios from "axios";
 import { BASE_URL } from "../../config";
 
 const Post = ({ post }) => {
-  const member = useSelector((state) => state.memberReducer);
+  const member = {
+    _id: "63ca88061d9d3df771775229",
+    email: "maurice@gmail.com",
+    password: "$2b$10$lkh1CvlIeamkXW29H60CVeXGs.MxnuJeZYE4Cbbljm.hnfh3SZH/O",
+    first_name: "Maurice",
+    last_name: "NAHOUNME",
+    civility: "M",
+    tel: "0753482251",
+    nationality: "Bénin",
+    num_street: "47 Avenue Paul Valéry",
+    address: "",
+    additional_address: "",
+    postal_code: "95200",
+    city: "Sarcelles",
+    createdAt: "2023-01-20T12:24:38.518+00:00",
+    updatedAt: "1674874342642",
+    picture: "./uploads/profil/Maurice.jpg",
+  };
   const [editing, setEditing] = useState(false);
   const [edited, setEdited] = useState("");
   const [comment, setComment] = useState(false);
@@ -36,7 +53,7 @@ const Post = ({ post }) => {
 
     if (commentContent) {
       axios.patch(`${BASE_URL}/blog/comments/${post._id}`, {
-        commenterId: member.member._id,
+        commenterId: member._id,
         comment: commentContent,
       });
     }
@@ -47,15 +64,15 @@ const Post = ({ post }) => {
 
   const like = () => {
     axios.patch(`${BASE_URL}/blog/likes-post/${post._id}`, {
-      id: member.member._id,
+      id: member._id,
     });
     setLiked(true);
   };
 
   useEffect(() => {
-    if (post.likers.includes(member.member._id)) setLiked(true);
+    if (post.likers.includes(member._id)) setLiked(true);
     else setLiked(false);
-  }, [member.member._id, post.likers, liked]);
+  }, [member._id, post.likers, liked]);
 
   // useEffect(() => {
   //   like();
@@ -109,7 +126,7 @@ const Post = ({ post }) => {
             <HeartOutlined
               onClick={liked ? unlike : like}
               className={
-                post.likers.includes(member.member._id) && liked ? "like" : ""
+                post.likers.includes(member._id) && liked ? "like" : ""
               }
             />
           }{" "}
@@ -124,7 +141,7 @@ const Post = ({ post }) => {
         {editing ? (
           <CheckOutlined onClick={handleEdit} />
         ) : (
-          member.member._id === post.author._id && (
+          member._id === post.author._id && (
             <EditOutlined onClick={() => setEditing(true)} />
           )
         )}

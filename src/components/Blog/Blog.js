@@ -15,7 +15,24 @@ import LeftSidebar from "./LeftSidebar";
 import { BASE_URL } from "../../config";
 
 const Blog = () => {
-  const member = useSelector((state) => state.memberReducer);
+  const member = {
+    _id: "63ca88061d9d3df771775229",
+    email: "maurice@gmail.com",
+    password: "$2b$10$lkh1CvlIeamkXW29H60CVeXGs.MxnuJeZYE4Cbbljm.hnfh3SZH/O",
+    first_name: "Maurice",
+    last_name: "NAHOUNME",
+    civility: "M",
+    tel: "0753482251",
+    nationality: "Bénin",
+    num_street: "47 Avenue Paul Valéry",
+    address: "",
+    additional_address: "",
+    postal_code: "95200",
+    city: "Sarcelles",
+    createdAt: "1674217478518",
+    updatedAt: "1674874342642",
+    picture: "./uploads/profil/Maurice.jpg",
+  };
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
@@ -73,7 +90,7 @@ const Blog = () => {
 
   return (
     <>
-      {member.member ? (
+      {member ? (
         <div className="blog">
           <Topbar />
           <CarouselMember />
