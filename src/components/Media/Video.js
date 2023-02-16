@@ -8,38 +8,18 @@ import axios from "axios";
 import moment from "moment";
 import { useEffect } from "react";
 import { BASE_URL } from "../../config";
+import { useMediaQuery } from "react-responsive";
 
 const Video = () => {
   const [medias, setMedias] = useState([]);
   const [play, setPlay] = useState("https://youtu.be/BBsZcv0Cplc");
   const [reloadPlaylist, setReloadPlaylist] = useState(true);
   const [mediaInfos, setMediaInfos] = useState({});
-  const [videos, setVideos] = useState([]);
-  // const [width, setWitdh] = (useState = useState(window.innerWidth));
 
-  // const getVideos = () => {
-  //   axios({
-  //     url: "https://www.googleapis.com/youtube/v3/search",
-  //     method: "GET",
-  //     data: {
-  //       part: "snippet",
-  //       chart: "chartUnspecified",
-  //       channelId: "UCQHfRuoiaC-sdgT8bNlT23Q",
-  //       type: "video",
-  //       key: "AIzaSyC5ov-AilBXqCrZ0ArHR22DpokFDRIDYKQ",
-  //     },
-  //   })
-  //     .then((value) => {
-  //       console.log("vid", value);
-  //       setVideos(value);
-  //     })
-  //     .catch((err) => {
-  //       console.log("er", err);
-  //     });
-  // };
-
-  // const updateSize = () => setWitdh(window.innerWidth);
-  // useEffect(() => (window.onresize = updateSize), []);
+  const isDesktopOrLaptop = useMediaQuery({
+    query: "(min-width: 1200px)",
+  });
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1200px)" });
 
   const getMedias = () => {
     axios
@@ -51,8 +31,6 @@ const Video = () => {
         console.log(err);
       });
   };
-
-  // console.log("mobile", width);
 
   const startMedia = () => {};
 
@@ -68,9 +46,9 @@ const Video = () => {
       <div className="video-contaier col-12">
         <div>
           <ReactPlayer
-            className="video col-10"
-            width="923px"
-            height="521px"
+            className="video"
+            width={isDesktopOrLaptop ? "923px" : "96%"}
+            height={isDesktopOrLaptop ? "521px" : "421px"}
             url={play}
             controls={true}
             loop={true}
@@ -111,17 +89,11 @@ const Video = () => {
             .sort((a, b) => moment(b.createdAt) - moment(a.createdAt))
             .map((media) => {
               return (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
+                <div>
                   <ReactPlayer
                     url={media.url}
-                    width="170px"
-                    height="95px"
+                    width={isTabletOrMobile ? "96%" : "170px"}
+                    height={isTabletOrMobile ? "250px" : "95px"}
                     style={{ marginTop: "15px" }}
                     playing={false}
                     light={true}
@@ -135,10 +107,25 @@ const Video = () => {
                     }}
                   />
 
-                  {/* <div style={{ position: "relative" }}>
-                  <h6>{media.title}</h6>
-                  <p>{media.author}</p>
-                </div> */}
+                  <div style={{ marginTop: "15px", marginLeft: "10px" }}>
+                    <h6
+                      style={{
+                        fontSize: "0.9em",
+                        marginBottom: "-6px",
+                      }}
+                    >
+                      {media.title}
+                    </h6>
+                    <span
+                      style={{
+                        fontSize: "0.6em",
+                        // border: "1px solid green",
+                        color: "grey",
+                      }}
+                    >
+                      {media.author}
+                    </span>
+                  </div>
                 </div>
               );
             })}
