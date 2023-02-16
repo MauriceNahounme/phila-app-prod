@@ -47,8 +47,8 @@ const Video = () => {
         <div>
           <ReactPlayer
             className="video"
-            width={isDesktopOrLaptop ? "923px" : "96%"}
-            height={isDesktopOrLaptop ? "521px" : "245px"}
+            width={isDesktopOrLaptop ? "923px" : "99%"}
+            height={isDesktopOrLaptop ? "521px" : "230px"}
             url={play}
             controls={true}
             loop={true}
@@ -92,8 +92,8 @@ const Video = () => {
                 <div>
                   <ReactPlayer
                     url={media.url}
-                    width={isTabletOrMobile ? "96%" : "170px"}
-                    height={isTabletOrMobile ? "245px" : "95px"}
+                    width={isTabletOrMobile ? "99%" : "170px"}
+                    height={isTabletOrMobile ? "230px" : "95px"}
                     style={{ marginTop: "15px" }}
                     playing={false}
                     light={true}
